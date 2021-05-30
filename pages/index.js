@@ -1,16 +1,14 @@
-import Head from "next/head";
+
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
-
+import Link from 'next/link';
+import Header from './components/Header';
+import Head from "next/head";
 
 export default function Home() {
   return (
     <div className={styles.container}>
-      <Head>
-        <title>FAKE API APP</title>
-        <meta name="description" content="next js app" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <Header/>
 
       <main className={styles.main}>
         <h1 className={styles.title}>Welcome to Next.js!</h1>
@@ -19,6 +17,12 @@ export default function Home() {
           Get started by editing{" "}
           <code className={styles.code}>pages/index.js</code>
         </p>
+        <Link href="/about">
+        about
+        </Link>
+        <Link href="/posts">
+        Posts
+        </Link>
       </main>
 
       <footer className={styles.footer}>
