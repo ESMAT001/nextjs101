@@ -3,40 +3,65 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import Link from 'next/link';
 import Header from './components/Header';
-import Head from "next/head";
+import Card from "@material-tailwind/react/Card";
+import CardHeader from "@material-tailwind/react/CardHeader";
+import CardBody from "@material-tailwind/react/CardBody";
+import CardFooter from "@material-tailwind/react/CardFooter";
+import InputIcon from "@material-tailwind/react/InputIcon";
+import Button from "@material-tailwind/react/Button";
+import H5 from "@material-tailwind/react/Heading5";
+
+import { userRouter } from 'next/router';
 
 export default function Home() {
+
+  const router = userRouter();
+
   return (
-    <div className={styles.container}>
-      <Header/>
+    <div className="flex flex-col justify-center items-center h-screen ">
+      <Header title={"NEXTJS APP"} />
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>Welcome to Next.js!</h1>
+      <main className="w-2/5">
+        <Card>
+          <CardHeader color="lightBlue" size="lg">
+            <H5 color="white">Login</H5>
+          </CardHeader>
 
-        <p className={styles.description}>
-          Get started by editing{" "}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-        <Link href="/about">
-        about
-        </Link>
-        <Link href="/posts">
-        Posts
-        </Link>
+          <CardBody>
+
+            <div className="mb-8 px-4">
+              <InputIcon
+                type="email"
+                color="lightBlue"
+                placeholder="Email Address"
+                iconName="email"
+              />
+            </div>
+            <div className="mb-4 px-4">
+              <InputIcon
+                type="password"
+                color="lightBlue"
+                placeholder="password"
+                iconName="lock"
+              />
+            </div>
+          </CardBody>
+          <CardFooter>
+            <div className="flex justify-center">
+              <Button
+                color="lightBlue"
+                buttonType="filled"
+                size="lg"
+                ripple="dark"
+              >
+                Login
+                    </Button>
+            </div>
+          </CardFooter>
+        </Card>
       </main>
 
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{" "}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
+
     </div>
   );
 }
