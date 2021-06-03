@@ -24,6 +24,7 @@ export default function login() {
 
     useEffect(() => {
         const userData = user.userData();
+        console.log(userData)
         if (userData.username && userData.email) {
             router.push('/')
         }
@@ -45,7 +46,7 @@ export default function login() {
             background: "linear-gradient(rgba(0,0,0, 0.7), rgba(0,0,0, 0.7)), url(./bg.jpg)",
             backgroundPosition: "center", backgroundSize: "cover"
         }}>
-            <Header title={"NEXTJS APP"} />
+            <Header title="Login Page" />
 
             <main className="w-10/12 sm:w-7/12 md:w-4/12">
                 <Card>

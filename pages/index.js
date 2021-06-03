@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import Header from './components/Header';
+import CustomHead from './components/Header';
 import Button from "@material-tailwind/react/Button";
 import { useRouter } from 'next/router'
 import useAccount from './js/user';
@@ -9,9 +9,15 @@ export default function Home() {
   const router = useRouter();
   const userData = useAccount().userData();
   useEffect(() => {
-    if (!userData.username && !userData.email) {
+    const dataFromLocal = JSON.parse(window.localStorage.getItem("userData"));
+
+    if (dataFromLocal.username) {
+      user.signIn(dataFromLocal.username)
+    } else {
       router.push('/login')
     }
+
+
   }, [])
 
 
@@ -22,10 +28,9 @@ export default function Home() {
 
   return (
     <div className="flex flex-col justify-center items-center h-screen ">
-      <Header title={"NEXTJS APP"} />
-
-      <main>
-        index
+      <CustomHead title={"NEXTJS APP"} />
+      <header>
+        <h1>index</h1>
         <Button
           color="lightBlue"
           buttonType="filled"
@@ -35,6 +40,10 @@ export default function Home() {
         >
           logout
         </Button>
+      </header>
+      <main>
+
+
       </main>
 
 
