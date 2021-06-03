@@ -23,7 +23,7 @@ async function signIn(username) {
     const res = await fetch("https://jsonplaceholder.typicode.com/users");
     const data = await res.json();
     for (let i = 0; i < data.length; i++) {
-        if (data[i].username !== username) continue;
+        if (data[i].username.toLowerCase() !== username.toLowerCase()) continue;
         return userData.signIn(data[i].username, data[i].email);
     }
     return {
@@ -42,7 +42,7 @@ function signOut() {
         }
     }
 }
-export function useAccount() {
+export default function useAccount() {
     return {
         signIn,
         signOut,
